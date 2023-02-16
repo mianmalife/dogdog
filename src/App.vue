@@ -49,8 +49,6 @@ import {
     </el-row>
     <Edit style="width: 1em; height: 1em; margin-right: 8px" />
     <Share style="width: 1em; height: 1em; margin-right: 8px" />
-    <Delete style="width: 1em; height: 1em; margin-right: 8px" />
-    <Search style="width: 1em; height: 1em; margin-right: 8px" />
   </div>
 </template>
 
