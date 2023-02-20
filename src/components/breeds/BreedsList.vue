@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
 import request from "@/shared/request";
 
 let dogList = reactive({});
