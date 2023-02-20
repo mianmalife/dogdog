@@ -1,13 +1,20 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import request from './axios/request'
+
+request({
+  method: 'GET',
+  url: '/dog-api/breeds-list'
+}).then((res) => {
+  console.log(res)
+})
 
 </script>
 
 <template>
-  <div class="wrapper">
-
+  <div>
     <RouterView />
-</div>
+  </div>
 </template>
 
 <style scoped></style>

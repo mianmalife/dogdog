@@ -12,9 +12,16 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 
-const pathSrc = path.resolve(__dirname, "src");
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      "/dog-api": {
+        target: "https://dog.ceo/",
+        changeOrigin: true,
+      },
+    },
+  },
   plugins: [
     vue(),
     vueJsx(),
@@ -34,8 +41,6 @@ export default defineConfig({
           prefix: "Icon",
         }),
       ],
-
-      dts: path.resolve(pathSrc, "auto-imports.d.ts"),
     }),
 
     Components({
@@ -49,8 +54,6 @@ export default defineConfig({
         // 自动导入 Element Plus 组件
         ElementPlusResolver(),
       ],
-
-      dts: path.resolve(pathSrc, "components.d.ts"),
     }),
 
     Icons({
