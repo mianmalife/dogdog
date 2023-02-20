@@ -14,14 +14,14 @@ import IconsResolver from "unplugin-icons/resolver";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    proxy: {
-      "/dog-api": {
-        target: "https://dog.ceo/",
-        changeOrigin: true,
-      },
-    },
-  },
+  // server: {
+  //   proxy: {
+  //     "/dog-api": {
+  //       target: "https://dog.ceo/",
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
   plugins: [
     vue(),
     vueJsx(),
