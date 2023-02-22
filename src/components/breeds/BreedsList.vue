@@ -1,14 +1,17 @@
 <script setup>
-import { reactive, onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import request from "@/shared/request";
-
-let dogList = reactive({});
+let urls = ref([])
+let loading = ref(true)
 onMounted(async () => {
+
   const res = await request({
     method: "GET",
-    url: "https://dog.ceo/api/breeds/list/all",
+    url: "https://dog.ceo/api/breed/`${$route.params.name}`/images/random/10",
   });
-  dogList.value = res.message;
+  urls.value = res.message;
+  loading.value = !loading
+  console.log(res.message)
 });
 // export default {
 //   name: "breedlists",
@@ -39,10 +42,15 @@ onMounted(async () => {
 <template>
   <div>
     狗狗列表
-    <ul>
-      <li v-for="(value, key) in dogList.value">{{ key }}</li>
+    <ul v-loading="loading">
+      <li v-for="url in urls" :key="url"><el-image :src="url" lazy /></li>
     </ul>
+
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+ul {
+  list-style: none;
+}
+</style>

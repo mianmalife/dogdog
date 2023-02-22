@@ -24,7 +24,7 @@ const router = createRouter({
           component: AppWelcome,
         },
         {
-          path: "breeds-list",
+          path: "breeds-list/:name",
           name: "dogbreeds",
           component: () => import("../components/breeds/BreedsList.vue"),
         },

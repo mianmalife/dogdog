@@ -14,7 +14,7 @@
 
 <style scoped>
 .el-main {
-    padding: 0;
+    margin: 0 auto
 }
 
 .main-header {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <el-container class="common-layout">
       <AppHeader />
       <!-- <el-container> -->
@@ -21,6 +21,11 @@ import AppMain from './AppMain.vue'
 </script>
 
 <style scoped>
+.layout {
+  padding: 40px 0;
+  width: 100vw;
+}
+
 .common-layout {
   flex-direction: column;
 }
