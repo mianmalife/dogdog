@@ -7,11 +7,13 @@ const fit = "scale-down";
 
 watchEffect(async () => {
   try {
-    const response = await fetch(
-      `https://dog.ceo/api/breed/${route.params.breed}/images`
-    );
-    const data = await response.json();
-    breedImages.value = data.message.slice(0, 50);
+    if (route.params.breed && route.params.breed !== "undefined") {
+      const response = await fetch(
+        `https://dog.ceo/api/breed/${route.params.breed}/images`
+      );
+      const data = await response.json();
+      breedImages.value = data.message.slice(0, 50);
+    }
   } catch (error) {
     breedImages.value = [];
   }
