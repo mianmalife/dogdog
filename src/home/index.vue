@@ -10,17 +10,22 @@ const handleSelect = (key, keyPath) => {
 };
 onMounted(() => {
   fetch("https://dog.ceo/api/breeds/list/all").then((response) => {
-    response.json().then((res) => {
-      console.log(res);
-      breeds.value = res.message
-        ? Object.keys(res.message).slice(0, 20) || []
-        : [];
-      router.push({
-        path: `/breedList/${Object.keys(res.message)[0]}`,
-        replace: true,
+    response
+      .json()
+      .then((res) => {
+        breeds.value = res.message
+          ? Object.keys(res.message).slice(0, 20) || []
+          : [];
+        router.push({
+          path: `/breedList/${Object.keys(res.message)[0]}`,
+          replace: true,
+        });
+        activeIndex.value = breeds.value[0];
+      })
+      .catch(() => {
+        breeds.value = [];
+        activeIndex.value = "";
       });
-      activeIndex.value = breeds.value[0];
-    });
   });
 });
 watchEffect(() => {
@@ -37,7 +42,7 @@ watchEffect(() => {
   <div>
     <el-container>
       <el-header class="header__box">
-        <div class="logo">LOGO</div>
+        <div class="logo">DOGDOG</div>
         <el-menu
           :default-active="activeIndex"
           class="menu__box"
