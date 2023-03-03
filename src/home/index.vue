@@ -48,6 +48,7 @@ watchEffect(() => {
           class="menu__box"
           mode="horizontal"
           router
+          menu-trigger="click"
           @select="handleSelect"
         >
           <el-menu-item v-for="breed in breeds" :index="String(breed)">{{
