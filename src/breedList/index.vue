@@ -38,12 +38,19 @@ watchEffect(async () => {
 .breed__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 300px;
+  grid-auto-rows: 20rem;
   grid-gap: 20px;
   overflow-y: auto;
 }
 .breed__list > div {
   border: 6px solid #fbf9f9;
   border-radius: 4px;
+}
+@media screen and (max-width: 720px) {
+  .breed__list {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 10rem;
+    grid-gap: 10px;
+  }
 }
 </style>
