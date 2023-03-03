@@ -1,36 +1,27 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../components/Home.vue";
-import AppLayout from "../components/layout/AppLayout.vue";
-import AppWelcome from "../components/layout/AppWelcome.vue";
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: Home,
-    },
-    {
-      path: "/appLayout",
-      name: "applayout",
-      component: AppLayout,
-      redirect: {
-        name: "appwelcome",
+import * as VueRouter from "vue-router";
+
+const routes = [
+  {
+    path: "/",
+    name: "home",
+    component: () => import("@/home/index.vue"),
+    children: [
+      {
+        path: "/breedList/:breed",
+        name: "breedList",
+        component: () => import("@/breedList/index.vue"),
       },
-      children: [
-        {
-          path: "welcome",
-          name: "appwelcome",
-          component: AppWelcome,
-        },
-        {
-          path: "breeds-list",
-          name: "dogbreeds",
-          component: () => import("../components/breeds/BreedsList.vue"),
-        },
-      ],
-    },
-  ],
+    ],
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "notFound",
+    component: () => import("@/notFound/index.vue"),
+  },
+];
+const router = VueRouter.createRouter({
+  history: VueRouter.createWebHashHistory(),
+  routes,
 });
 
 export default router;

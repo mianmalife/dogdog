@@ -10,14 +10,6 @@ import ElementPlus from "unplugin-element-plus/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // server: {
-  //   proxy: {
-  //     "/dog-api": {
-  //       target: "https://dog.ceo/",
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
   plugins: [
     vue(),
     AutoImport({
