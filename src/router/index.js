@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../components/Home.vue";
-import AppLayout from "../components/layout/AppLayout.vue";
-import AppWelcome from "../components/layout/AppWelcome.vue";
+import Home from "@/components/Home.vue";
+import AppLayout from "@/components/layout/AppLayout.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,21 +13,22 @@ const router = createRouter({
       path: "/appLayout",
       name: "applayout",
       component: AppLayout,
-      redirect: {
-        name: "appwelcome",
-      },
       children: [
         {
-          path: "welcome",
-          name: "appwelcome",
-          component: AppWelcome,
-        },
-        {
-          path: "breeds-list/:name",
+          path: "breeds-list/:dog",
           name: "dogbreeds",
-          component: () => import("../components/breeds/BreedsList.vue"),
+          component: () => import("@/components/breeds/BreedsList.vue"),
         },
       ],
+    },
+    {
+      path: "/404",
+      name: "NoPage404",
+      component: () => import("@/components/NoPage.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)",
+      redirect: "/404",
     },
   ],
 });

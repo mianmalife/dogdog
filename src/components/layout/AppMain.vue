@@ -1,10 +1,7 @@
 <template>
     <el-main>
-        <div class="main-header">
-
-            <RouterView />
-
-        </div>
+        <RouterView />
+        <el-backtop />
     </el-main>
 </template>
 
@@ -14,10 +11,7 @@
 
 <style scoped>
 .el-main {
+    width: 80vw;
     margin: 0 auto
-}
-
-.main-header {
-    display: flex;
 }
 </style>
