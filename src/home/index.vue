@@ -36,12 +36,22 @@ watchEffect(() => {
     activeIndex.value = breeds.value[0];
   }
 });
+
+function backIndex() {
+  if (breeds.value) {
+    router.push({
+      path: `/breedList/${breeds.value[0]}`,
+      replace: true,
+    });
+    activeIndex.value = breeds.value[0];
+  }
+}
 </script>
 <template>
   <div>
     <el-container>
       <el-header class="header__box">
-        <div class="logo">DOGDOG</div>
+        <div class="logo" @click="backIndex">DOGDOG</div>
         <el-menu
           :default-active="activeIndex"
           class="menu__box"
@@ -70,6 +80,7 @@ watchEffect(() => {
   .logo {
     width: 80px;
     font-weight: bold;
+    cursor: pointer;
   }
   .menu__box {
     padding: 0;

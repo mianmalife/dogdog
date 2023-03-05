@@ -1,14 +1,12 @@
 # dogdog
 
-This template should help get you started developing with Vue 3 in Vite.
+基于[dog.ceo](https://dog.ceo/dog-api/)免费 api 的狗狗图片网站,仅供学习与娱乐~
 
-## Recommended IDE Setup
+## 前端技术栈
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+```
+vite, vue3, vue-router4, element-plus
+```
 
 ## Project Setup
 
