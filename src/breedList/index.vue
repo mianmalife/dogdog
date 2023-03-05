@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
+import axios from "@/shared/request";
 const breedImages = ref([]);
 const route = useRoute();
 const fit = "scale-down";
@@ -8,11 +9,10 @@ const fit = "scale-down";
 watchEffect(async () => {
   try {
     if (route.params.breed && route.params.breed !== "undefined") {
-      const response = await fetch(
+      const response = await axios(
         `https://dog.ceo/api/breed/${route.params.breed}/images`
       );
-      const data = await response.json();
-      breedImages.value = data.message.slice(0, 50);
+      breedImages.value = response.message.slice(0, 50);
     }
   } catch (error) {
     breedImages.value = [];

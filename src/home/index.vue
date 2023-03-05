@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, watchEffect } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import axios from "@/shared/request";
 const breeds = ref([]);
 const activeIndex = ref("0");
 const router = useRouter();
@@ -9,24 +10,22 @@ const handleSelect = (key, keyPath) => {
   activeIndex.value = key;
 };
 onMounted(() => {
-  fetch("https://dog.ceo/api/breeds/list/all").then((response) => {
-    response
-      .json()
-      .then((res) => {
-        breeds.value = res.message
-          ? Object.keys(res.message).slice(0, 20) || []
-          : [];
-        router.push({
-          path: `/breedList/${Object.keys(res.message)[0]}`,
-          replace: true,
-        });
-        activeIndex.value = breeds.value[0];
-      })
-      .catch(() => {
-        breeds.value = [];
-        activeIndex.value = "";
+  axios
+    .get("https://dog.ceo/api/breeds/list/all")
+    .then((response) => {
+      breeds.value = response.message
+        ? Object.keys(response.message).slice(0, 20) || []
+        : [];
+      router.push({
+        path: `/breedList/${Object.keys(response.message)[0]}`,
+        replace: true,
       });
-  });
+      activeIndex.value = breeds.value[0];
+    })
+    .catch(() => {
+      breeds.value = [];
+      activeIndex.value = "";
+    });
 });
 watchEffect(() => {
   if (Object.keys(route.params).length === 0) {
